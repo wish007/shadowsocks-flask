@@ -1,0 +1,56 @@
+<!--使用JinJa2中的extends指令从Flask-Bootstrap中导入bootstrap/base.html，从而实现模板继承-->
+{% extends "bootstrap/base.html" %}
+
+<!--定义一个title块，用于显示页面的名称-->
+{% block title %}Flask{% endblock %}
+
+<!--定义一个head块，用于显示网页标签中的内容-->
+{% block head %}
+{{ super() }}
+<!--其中小辣椒的图标是放在Flask\static目录下的favicon.ico文件-->
+<link rel="shortcut icon" href="{{ url_for('static',filename = 'favicon.ico') }}"
+      type="image/x-icon">
+<link rel="icon" href="{{ url_for('static',filename = 'favicon.ico') }}"
+      type="image/x-icon">
+{% endblock %}
+
+<!--定义一个navbar块，用于显示页面中的导航条-->
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Flask</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Profile</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!--定义一个content块,用于显示主体内容-->
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
