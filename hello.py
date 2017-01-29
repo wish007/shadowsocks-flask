@@ -12,7 +12,7 @@ app = Flask(__name__)
 # 将程序实例传入构造方法进行初始化
 bootstrap = Bootstrap(app)
 # 使用Flask-WTF设置一个密钥，避免跨站请求伪造攻击
-app.config['SECRET_KEY'] = 'hard to guess string'
+app.config['SECRET_KEY'] = 'ThisIsAHardGuessString.&uY^%FG0-@Fv'
 
 # 在视图函数中添加路由方法，使之能够渲染表单
 @app.route('/', methods=['GET', 'POST'])
@@ -25,19 +25,6 @@ def index():
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'))
-
-@app.route('/user/<name>')
-def user(name):
-    return render_template('user.html', name=name)
-
-# 自定义错误页面
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'),404
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    return render_template('500.html'),500
 
 # 定义一个表单类，用于提交表单
 class NameForm(Form):
