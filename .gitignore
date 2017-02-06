@@ -11,3 +11,6 @@ Desktop.ini
 
 # 忽略 SQLite 数据库文件
 *.db
+
+# 忽略数据库迁移文件夹
+db_repository/
