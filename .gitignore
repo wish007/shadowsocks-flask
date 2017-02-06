@@ -1,2 +1,13 @@
-__pycache__/
+# 忽略表示PyCharm项目的 .idea 文件夹
 .idea/
+
+# 忽略 Python 解释器生成的文件夹
+__pycache__/
+
+# Windows自动生成的垃圾文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 忽略 SQLite 数据库文件
+*.db
