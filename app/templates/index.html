@@ -6,9 +6,21 @@
 {% block title %}Flask{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
+<!-- <div class="page-header">
     <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
-</div>
+</div> -->
 <!--添加和表单相关的渲染代码-->
-{{ wtf.quick_form(form) }}
+<!-- {{ wtf.quick_form(form) }} -->
+
+{% if not current_user.is_authenticated() %}
+<h1>Hi, Guys!</h1>
+{% else %}
+<h1>Welcome back, {{ current_user.nickname }}!</h1>
+{% endif %}
+
+<!-- {% for post in posts %}
+    <p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p>
+</div>
+{% endfor %} -->
+
 {% endblock %}

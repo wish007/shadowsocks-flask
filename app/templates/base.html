@@ -31,12 +31,18 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
             </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="/">Profile</a></li>
-            </ul>
+            {% if not current_user.is_authenticated() %}
             <ul class="nav navbar-nav">
                 <li><a href="/login">Login</a></li>
             </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/sign-up">Sign up</a></li>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-nav">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            {% endif %}
         </div>
     </div>
 </div>
