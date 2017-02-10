@@ -2,7 +2,7 @@
 {% extends "bootstrap/base.html" %}
 
 <!--定义一个title块，用于显示页面的名称-->
-{% block title %}Flask{% endblock %}
+{% block title %}Shadowsocks{% endblock %}
 
 <!--定义一个head块，用于显示网页标签中的内容-->
 {% block head %}
@@ -25,22 +25,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Flask</a>
+            <a class="navbar-brand" href="/">Shadowsocks</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Personal</a></li>
             </ul>
             {% if not current_user.is_authenticated() %}
             <ul class="nav navbar-nav">
-                <li><a href="/login">Login</a></li>
+                <li><a href="/login">Sign in</a></li>
             </ul>
             <ul class="nav navbar-nav">
                 <li><a href="/sign-up">Sign up</a></li>
             </ul>
             {% else %}
             <ul class="nav navbar-nav">
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout">Sign out</a></li>
             </ul>
             {% endif %}
         </div>
