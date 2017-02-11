@@ -23,6 +23,9 @@ def load_user(user_id):
 def index():
     form = LoginForm()
     return render_template('index.html', form=form, name=session.get('name'))
+# def index():
+#     # form = LoginForm()
+#     return render_template('index.html')
 
 
 @app.route('/login', methods = ['GET', 'POST'])
@@ -37,7 +40,7 @@ def login():
         if user is not None and user.verify_password(form.user_password.data):
             login_user(user, form.remember_me.data)
             return redirect(url_for('index'))
-        flash('Invalid username or password.')
+        flash('Invalid Username or Password.')
     return render_template('login.html', title = 'Sign In', form = form)
 
 
@@ -45,6 +48,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('You have been signed out.')
     return redirect(url_for('index'))
 
 
@@ -60,7 +64,7 @@ def sign_up():
         register_check = User.query.filter(db.or_(
             User.username == user_name, User.email == user_email)).first()
         if register_check:
-            flash("Error: The user's name or email already exists!")
+            flash("Error: Username or Email already exists.")
             return redirect(url_for('sign_up'))
 
         if len(user_name) and len(user_email) and len(user_password):
@@ -73,10 +77,10 @@ def sign_up():
                 db.session.add(user)
                 db.session.commit()
             except:
-                flash("The Database error!")
+                flash("Database error.")
                 return redirect(url_for('sign_up'))
 
-            flash("Sign up successful!")
+            flash("Sign up successful.")
             return redirect(url_for('index'))
 
     return render_template("sign_up.html", form=form)

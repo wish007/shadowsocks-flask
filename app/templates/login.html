@@ -6,21 +6,20 @@
 <h1>Sign in</h1>
 <form action="/login" method="post" name="login">
     {{ form.hidden_tag() }}
-    <p>
-        Username / Email<br>
-        {{ form.user_name(size=20) }}</p>
-        {% for error in form.errors.user_name %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
 
-    <p>
-        Password<br>
-        {{ form.user_password(size=20) }}</p>
-        {% for error in form.errors.user_password %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+    <p>Username<br>
+    {{ form.user_name(size=20) }}</p>
+    {% for error in form.errors.user_name %}
+    <span style="color: red;">*{{ error }}</span>
+    {% endfor %}
+
+    <p>Password<br>
+    {{ form.user_password(size=20) }}</p>
+    {% for error in form.errors.user_password %}
+    <span style="color: red;">*{{ error }}</span>
+    {% endfor %}
 
     <p>{{ form.remember_me }} Remember Me?</p>
-    <p><input type="submit" value="Sign In"></p>
+    <p><input type="submit" value="Sign in"></p>
 </form>
 {% endblock %}
