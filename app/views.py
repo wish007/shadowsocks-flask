@@ -84,3 +84,12 @@ def sign_up():
             return redirect(url_for('index'))
 
     return render_template("sign_up.html", form=form)
+
+@app.route('/recharge', methods = ['GET', 'POST'])
+def recharge():
+    # 验证用户是否被验证
+    # if current_user.is_authenticated():
+    #     return redirect(url_for('recharge'))
+    # 注册验证
+    form = LoginForm()
+    return render_template('recharge.html', title = 'Recharge', form = form)

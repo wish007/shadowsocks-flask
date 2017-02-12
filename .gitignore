@@ -14,3 +14,6 @@ Desktop.ini
 
 # 忽略数据库迁移文件夹
 db_repository/
+
+# 忽略 pay_files 文件夹下的收款二维码
+pay_files/

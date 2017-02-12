@@ -12,7 +12,7 @@
 <h3>Your Account</h3>
     <hr>
     {% if not current_user.port %}
-        <p>Your account is not available, please click here to recharge.</p>
+        <p>Your account is not available, please click <a href="/recharge">here</a> to recharge.</p>
     {% else %}
         <p>Port: {{ current_user.port }}</p>
         <p>Password: {{ current_user.ss_password }}</p>
