@@ -2,21 +2,20 @@
 
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Shadowsocks{% endblock %}
+{% block title %}充值{% endblock %}
 
 {% block page_content %}
 
 {% if not current_user.is_authenticated() %}
-<h1>Please sign in.</h1>
+<h1>请先登录！</h1>
 {% else %}
-<h3>Recharge</h3>
+<h3>充值</h3>
 <hr>
-<p>You can pay with <strong>Alipay</strong> or <strong>Wechat Pay.</strong></p>
-<p>Please note your username in the payment interface.</p>
+    <p>你可以使用 <strong>支付宝</strong> 或者 <strong>微信</strong> 进行支付；请在付款页面备注你的用户名.</p>
 <hr>
 
-<h3>Alipay:</h3>
-<p>There are ￥10 / ￥60 / ￥120 for choose.</p>
+<h3>支付宝：</h3>
+<p>可选择 ￥10 / ￥60 / ￥120 进行支付.</p>
 <p><img src="static/pay_files/alipay_10.png"></p>
     <hr>
 <p><img src="static/pay_files/alipay_60.png"></p>
@@ -24,8 +23,9 @@
 <p><img src="static/pay_files/alipay_120.png"></p>
 
 <hr>
-<h3>Wechat Pay:</h3>
-<p>There are ￥10 / ￥60 / ￥120 for choose.</p>
+
+<h3>微信支付:</h3>
+<p>可选择 ￥10 / ￥60 / ￥120 进行支付.</p>
 <p><img src="static/pay_files/wechatpay_10.png"></p>
     <hr>
 <p><img src="static/pay_files/wechatpay_60.png"></p>

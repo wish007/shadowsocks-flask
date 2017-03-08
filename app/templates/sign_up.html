@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Sign up{% endblock %}
+{% block title %}注册{% endblock %}
 
 {% block page_content %}
 
-<h1>Sign up</h1>
+<h1>注册</h1>
 <form action="/sign-up", method="POST" name="sign_up">
     {{ form.hidden_tag() }}
-    <p>Username<br>
+    <p>用户名<br>
         {{ form.user_name }}</p>
     {% for error in form.errors.user_name %}
     <p style="color:red;">* {{ error }}</p>
     {% endfor %}
 
-    <p>Password<br>
+    <p>密码<br>
         {{ form.user_password }}</p>
     {% for error in form.errors.user_password %}
     <p style="color:red;">* {{ error }}</p>
     {% endfor %}
 
-    <p>Email<br>
+    <p>邮箱<br>
         {{ form.user_email }}</p>
     {% for error in form.errors.user_email %}
     <p style="color:red;">* {{ error }}</p>

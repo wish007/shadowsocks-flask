@@ -2,21 +2,21 @@
 
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Shadowsocks{% endblock %}
+{% block title %}WISH007{% endblock %}
 
 {% block page_content %}
 
 {% if not current_user.is_authenticated() %}
-<h1>Hi, Guys!</h1>
+<h1>欢迎！</h1>
 {% else %}
-<h3>Your Account</h3>
+<h3>SS 账号信息</h3>
     <hr>
     {% if not current_user.port %}
-        <p>Your account is not available, please click <a href="/recharge">here</a> to recharge.</p>
+        <p>你的账号已到期，请<a href="/recharge">充值</a> to recharge.</p>
     {% else %}
-        <p>Port: {{ current_user.port }}</p>
-        <p>Password: {{ current_user.ss_password }}</p>
-        <p>Valid date: {{ current_user.valid_date }}</p>
+        <p>端口号：{{ current_user.port }}</p>
+        <p>密&nbsp;&nbsp;&nbsp;码：{{ current_user.ss_password }}</p>
+        <p>有效期： {{ current_user.valid_date }}</p>
     {% endif %}
 {% endif %}
 

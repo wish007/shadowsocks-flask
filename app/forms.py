@@ -11,14 +11,19 @@ class NameForm(Form):
     name = StringField('what is your name?', validators=[Required()])
     submit = SubmitField('Submit')
 
+
 class LoginForm(Form):
-    user_name = StringField('user name', validators=[Required(), Length(max=15)])
+    user_name = StringField('user name',
+                            validators=[Required(), Length(max=15)])
     user_password = PasswordField('password', validators=[Required()])
     remember_me = BooleanField('remember me', default=False)
     submit = SubmitField('Log in')
 
+
 class SignUpForm(Form):
-    user_name = StringField('user name', validators=[Required(), Length(max=15)])
+    user_name = StringField('user name',
+                            validators=[Required(), Length(max=15)])
     user_password = PasswordField('password', validators=[Required()])
-    user_email = StringField('user email', validators=[Email(), Required(), Length(max=128)])
-    submit = SubmitField('Sign up')
+    user_email = StringField('user email',
+                             validators=[Email(), Required(), Length(max=128)])
+    submit = SubmitField('提交')

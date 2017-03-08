@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Sign in{% endblock %}
+{% block title %}登录{% endblock %}
 
 {% block page_content %}
-<h1>Sign in</h1>
+<h1>登录</h1>
 <form action="/login" method="post" name="login">
     {{ form.hidden_tag() }}
 
-    <p>Username<br>
+    <p>用户名<br>
     {{ form.user_name(size=20) }}</p>
     {% for error in form.errors.user_name %}
     <span style="color: red;">*{{ error }}</span>
     {% endfor %}
 
-    <p>Password<br>
+    <p>密码<br>
     {{ form.user_password(size=20) }}</p>
     {% for error in form.errors.user_password %}
     <span style="color: red;">*{{ error }}</span>
     {% endfor %}
 
-    <p>{{ form.remember_me }} Remember Me?</p>
-    <p><input type="submit" value="Sign in"></p>
+    <p>{{ form.remember_me }} 记住我？</p>
+    <p><input type="submit" value="提交"></p>
 </form>
 {% endblock %}

@@ -3,7 +3,7 @@
 import datetime
 # 使用render_template函数把JinJa2模板引擎集成到hello.py
 from flask import render_template, flash, redirect, session, url_for, request, g 
-from flask.ext.login import login_user, logout_user, current_user, login_required 
+from flask.ext.login import login_user, logout_user, current_user, login_required
 from app.models import User, ROLE_USER, ROLE_ADMIN
 from app import app, db, lm
 # 导入和表单提交有关的类
@@ -28,7 +28,13 @@ def index():
 #     return render_template('index.html')
 
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/hello')
+def hello():
+    string = '<h1>Hello, World!</h1><p>yes you can!</p>'
+    return render_template('hello.html', string=string)
+
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     # 验证用户是否被验证
     if current_user.is_authenticated():
@@ -41,7 +47,7 @@ def login():
             login_user(user, form.remember_me.data)
             return redirect(url_for('index'))
         flash('Invalid Username or Password.')
-    return render_template('login.html', title = 'Sign In', form = form)
+    return render_template('login.html', title='Sign In', form=form)
 
 
 @app.route('/logout')
@@ -69,8 +75,8 @@ def sign_up():
 
         if len(user_name) and len(user_email) and len(user_password):
             user.username = user_name
-            user.password_hash = generate_password_hash(user_password,
-                                 method='pbkdf2:sha1', salt_length=8)
+            user.password_hash = generate_password_hash(
+                user_password, method='pbkdf2:sha1', salt_length=8)
             user.email = user_email
             user.role = ROLE_USER
             try:
@@ -85,11 +91,12 @@ def sign_up():
 
     return render_template("sign_up.html", form=form)
 
-@app.route('/recharge', methods = ['GET', 'POST'])
+
+@app.route('/recharge', methods=['GET', 'POST'])
 def recharge():
     # 验证用户是否被验证
     # if current_user.is_authenticated():
     #     return redirect(url_for('recharge'))
     # 注册验证
     form = LoginForm()
-    return render_template('recharge.html', title = 'Recharge', form = form)
+    return render_template('recharge.html', title='Recharge', form=form)
